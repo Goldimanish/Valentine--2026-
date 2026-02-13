@@ -83,7 +83,7 @@
         .container.open .card {
             visibility: visible;
             opacity: 1;
-            transform: translateY(-320px); /* Slightly higher for lyrics */
+            transform: translateY(-330px);
         }
 
         img {
@@ -101,7 +101,7 @@
             font-style: italic;
             font-weight: bold;
             font-size: 0.85rem;
-            margin: 10px 0;
+            margin: 8px 0;
             display: block;
         }
 
@@ -129,7 +129,8 @@
 <body>
 
     <audio id="my_audio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        <source src="music .mp3"
+type="audio/mpeg">
     </audio>
 
     <div class="container" onclick="openLetter()">
@@ -152,14 +153,13 @@
     <script>
         function openLetter() {
             document.querySelector('.container').classList.toggle('open');
-            
             var audio = document.getElementById("my_audio");
             if (document.querySelector('.container').classList.contains('open')) {
                 audio.play();
             } else {
                 audio.pause();
+                audio.currentTime = 0;
             }
-            
             createHearts();
         }
 
