@@ -1,155 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Favorite Person</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fae1dd;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
+<style>
+    /* ... (Keep your body and envelope CSS the same) ... */
 
-        .container {
-            position: relative;
-            cursor: pointer;
-        }
+    .card {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 280px;
+        /* Removed fixed height to let the photo fit */
+        height: auto; 
+        min-height: 180px;
+        background: white;
+        padding: 15px;
+        box-sizing: border-box;
+        text-align: center;
+        transition: transform 0.5s ease;
+        z-index: 1;
+        border-radius: 5px;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    }
 
-        /* The Envelope */
-        .envelope {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: #f08080;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+    /* We need to slide the card up higher now because the photo is tall */
+    .container.open .card {
+        transform: translateY(-250px); 
+    }
 
-        .envelope::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            z-index: 2;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 100px solid #f4978e;
-            transform-origin: top;
-            transition: transform 0.5s ease;
-        }
+    img {
+        width: 100%;    /* Makes photo fit width of the letter */
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: block;
+    }
 
-        /* Open Animation */
-        .container.open .envelope::before {
-            transform: rotateX(180deg);
-            z-index: 0;
-        }
+    h1 {
+        font-size: 1rem;
+        color: #d81159;
+        margin: 5px 0;
+    }
 
-        /* The Letter */
-        .card {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            width: 280px;
-            height: 180px;
-            background: white;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-            transition: transform 0.5s ease;
-            z-index: 1;
-            border-radius: 5px;
-        }
+    p {
+        font-size: 0.85rem;
+        color: #333;
+        line-height: 1.4;
+        margin: 5px 0;
+    }
+</style>
 
-        .container.open .card {
-            transform: translateY(-120px);
-        }
-
-        h1 {
-            font-size: 1.2rem;
-            color: #d81159;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 0.9rem;
-            color: #333;
-            line-height: 1.4;
-        }
-
-        .heart {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 50px;
-            transform: translate(-50%, -50%);
-            color: #d81159;
-            font-size: 2rem;
-        }
-
-        /* Floating Hearts Background */
-        .bg-heart {
-            position: absolute;
-            color: #ffb4a2;
-            animation: float 4s infinite ease-in;
-            opacity: 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-  img {
-    max-width: 90%; /* Keeps it from hitting the edges */
-    height: auto;   /* Keeps the photo from looking squished */
-    border-radius: 15px; /* Gives it nice rounded corners */
-    margin: 20px auto; /* Adds space above and below */
-    display: block; /* Centers the image */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}  </style>
-</head>
 <body>
-
     <div class="container" onclick="openLetter()">
         <div class="envelope"></div>
         <div class="card">
-            <h1> <a href="https://ibb.co/Q3ZpgjcV"><img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="IMG-20251020-WA0006" border="0"></a></h1>
-            <p> मैंने कभी नहीं सोचा था कि कोई मुझे इतना प्यार करेगी...🥹❤️
-Thank you so much मेरी life
-में आने के लिए...🥹❤️‍🩹🫂
-❤️‍🩹Happy valentines day Goldi ❤️‍🩹
-Every day with you feels like a dream. Thank you for being my better half. </p>
+            <img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Our Photo">
+            
+            <h1>Happy Valentine's Day, Goldi! ❤️</h1>
+            
+            <p>मैंने कभी नहीं सोचा था कि कोई मुझे इतना प्यार करेगी...🥹❤️</p>
+            <p>Thank you so much मेरी life में आने के लिए...🥹❤️‍🩹🫂</p>
+            <p>Every day with you feels like a dream.</p>
+            
             <p><strong>- Your Favorite Person</strong></p>
         </div>
     </div>
-
-    <script>
-        function openLetter() {
-            document.querySelector('.container').classList.toggle('open');
-            createHearts();
-        }
-
-        function createHearts() {
-            for(let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = '❤️';
-                    heart.classList.add('bg-heart');
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                    heart.style.duration = (Math.random() * 3 + 2) + 's';
-                    document.body.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 150);
-            }
-        }
-    </script>
 </body>
-</html>
-
