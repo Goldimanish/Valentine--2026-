@@ -1,5 +1,5 @@
 
-             <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,7 +83,7 @@
         .container.open .card {
             visibility: visible;
             opacity: 1;
-            transform: translateY(-300px); /* Lifted high to show the new line */
+            transform: translateY(-320px); /* Slightly higher for lyrics */
         }
 
         img {
@@ -94,9 +94,17 @@
         }
 
         h1 { font-size: 1rem; color: #d81159; margin: 5px 0; }
-        p { font-size: 0.85rem; color: #333; line-height: 1.4; margin: 5px 0; }
+        p { font-size: 0.82rem; color: #333; line-height: 1.4; margin: 5px 0; }
 
-        /* The Red "A ji" Styling */
+        .lyrics {
+            color: #ff0000;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin: 10px 0;
+            display: block;
+        }
+
         .special-name {
             display: block;
             color: #ff0000;
@@ -120,14 +128,22 @@
 </head>
 <body>
 
+    <audio id="my_audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container" onclick="openLetter()">
         <div class="envelope"></div>
         <div class="card">
             <img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Our Memory">
             <h1>Happy Valentine's Day, Goldi! ❤️</h1>
+            
+            <span class="lyrics">"इतनी मोहब्बत करो ना कि डूब न जाऊं कहीं वापस किनारे पर"</span>
+
             <p>मैंने कभी नहीं सोचा था कि कोई मुझे इतना प्यार करेगी...🥹❤️</p>
             <p>Thank you so much मेरी life में आने के लिए...🥹❤️‍🩹🫂</p>
             <p>Every day with you feels like a dream.</p>
+            
             <p><strong>- Your Favorite Person</strong></p>
             <span class="special-name">"A ji"</span>
         </div>
@@ -136,6 +152,14 @@
     <script>
         function openLetter() {
             document.querySelector('.container').classList.toggle('open');
+            
+            var audio = document.getElementById("my_audio");
+            if (document.querySelector('.container').classList.contains('open')) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+            
             createHearts();
         }
 
