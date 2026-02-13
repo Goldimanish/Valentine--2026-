@@ -104,7 +104,14 @@
             0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
-    </style>
+  img {
+    max-width: 90%; /* Keeps it from hitting the edges */
+    height: auto;   /* Keeps the photo from looking squished */
+    border-radius: 15px; /* Gives it nice rounded corners */
+    margin: 20px auto; /* Adds space above and below */
+    display: block; /* Centers the image */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}  </style>
 </head>
 <body>
 
@@ -145,3 +152,4 @@ Every day with you feels like a dream. Thank you for being my better half. </p>
     </script>
 </body>
 </html>
+
