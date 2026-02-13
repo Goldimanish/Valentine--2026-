@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+             <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +24,6 @@
             height: 200px;
         }
 
-        /* The Back of the Envelope */
         .envelope {
             position: absolute;
             width: 300px;
@@ -34,7 +34,6 @@
             z-index: 1;
         }
 
-        /* The Flap */
         .envelope::before {
             content: "";
             position: absolute;
@@ -47,7 +46,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* The Front Pocket */
         .envelope::after {
             content: "";
             position: absolute;
@@ -59,7 +57,6 @@
             border-bottom: 100px solid #f08080;
         }
 
-        /* The Letter/Card */
         .card {
             position: absolute;
             bottom: 5px;
@@ -67,7 +64,7 @@
             width: 280px;
             height: auto;
             background: white;
-            padding: 12px;
+            padding: 15px;
             box-sizing: border-box;
             text-align: center;
             transition: transform 0.6s ease-in-out;
@@ -75,10 +72,9 @@
             border-radius: 5px;
             visibility: hidden;
             opacity: 0;
-            box-shadow: 0 -5px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
-        /* OPEN ANIMATION */
         .container.open .envelope::before {
             transform: rotateX(180deg);
             z-index: 0; 
@@ -87,7 +83,7 @@
         .container.open .card {
             visibility: visible;
             opacity: 1;
-            transform: translateY(-280px); /* Lifted slightly higher for the extra text */
+            transform: translateY(-300px); /* Lifted high to show the new line */
         }
 
         img {
@@ -97,10 +93,18 @@
             margin-bottom: 10px;
         }
 
-        h1 { font-size: 0.95rem; color: #d81159; margin: 5px 0; }
-        p { font-size: 0.8rem; color: #333; line-height: 1.4; margin: 5px 0; }
+        h1 { font-size: 1rem; color: #d81159; margin: 5px 0; }
+        p { font-size: 0.85rem; color: #333; line-height: 1.4; margin: 5px 0; }
 
-        /* Floating Hearts Background */
+        /* The Red "A ji" Styling */
+        .special-name {
+            display: block;
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
         .bg-heart {
             position: absolute;
             color: #ffb4a2;
@@ -119,12 +123,13 @@
     <div class="container" onclick="openLetter()">
         <div class="envelope"></div>
         <div class="card">
-            <img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Special Memory">
+            <img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Our Memory">
             <h1>Happy Valentine's Day, Goldi! ❤️</h1>
             <p>मैंने कभी नहीं सोचा था कि कोई मुझे इतना प्यार करेगी...🥹❤️</p>
             <p>Thank you so much मेरी life में आने के लिए...🥹❤️‍🩹🫂</p>
             <p>Every day with you feels like a dream.</p>
-            <p><strong>- Your Favorite Person A ji</strong></p>
+            <p><strong>- Your Favorite Person</strong></p>
+            <span class="special-name">"A ji"</span>
         </div>
     </div>
 
