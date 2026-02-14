@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Goldi</title>
+    <title>For Goldi ❤️</title>
     <style>
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end; /* Moved to bottom */
             height: 100vh;
             background-color: #fae1dd;
             margin: 0;
+            padding-bottom: 50px; /* Space from very bottom */
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
@@ -22,6 +23,7 @@
             cursor: pointer;
             width: 300px;
             height: 200px;
+            z-index: 20;
         }
 
         .envelope {
@@ -31,14 +33,14 @@
             background-color: #f08080; 
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
-            z-index: 1;
+            z-index: 3;
         }
 
         .envelope::before {
             content: "";
             position: absolute;
             top: 0;
-            z-index: 4; 
+            z-index: 5; 
             border-left: 150px solid transparent;
             border-right: 150px solid transparent;
             border-top: 110px solid #f4978e;
@@ -50,7 +52,7 @@
             content: "";
             position: absolute;
             bottom: 0;
-            z-index: 3; 
+            z-index: 4; 
             border-left: 150px solid #f08080;
             border-right: 150px solid #f08080;
             border-top: 100px solid transparent;
@@ -59,15 +61,14 @@
 
         .card {
             position: absolute;
-            bottom: 5px;
+            bottom: 10px;
             left: 10px;
             width: 280px;
-            height: auto;
             background: white;
             padding: 15px;
             box-sizing: border-box;
             text-align: center;
-            transition: transform 0.6s ease-in-out;
+            transition: transform 0.8s ease-in-out, opacity 0.5s;
             z-index: 2; 
             border-radius: 5px;
             visibility: hidden;
@@ -77,18 +78,21 @@
 
         .container.open .envelope::before {
             transform: rotateX(180deg);
-            z-index: 0; 
+            z-index: 1; 
         }
 
+        /* Card slides UP and stays visible on mobile */
         .container.open .card {
             visibility: visible;
             opacity: 1;
-            transform: translateY(-280px); /* Adjusted back since lyrics are gone */
+            transform: translateY(-320px); 
         }
 
-        img {
+        img.memory {
             width: 100%;
             height: auto;
+            max-height: 200px; /* Keeps image from getting too huge */
+            object-fit: cover;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -108,16 +112,20 @@
             position: absolute;
             color: #ffb4a2;
             animation: float 4s infinite ease-in;
-            z-index: 10;
+            z-index: 1;
         }
 
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
+
+        #tracker { display: none; }
     </style>
 </head>
 <body>
+
+    <img id="tracker" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FYOUR_GITHUB_USERNAME%2Ffor-goldi&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="tracker">
 
     <audio id="my_audio" loop preload="auto">
         <source src="music.mp3" type="audio/mpeg">
@@ -126,7 +134,7 @@
     <div class="container" onclick="openLetter()">
         <div class="envelope"></div>
         <div class="card">
-            <img src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Special Memory">
+            <img class="memory" src="https://i.ibb.co/7dHjfNzD/IMG-20251020-WA0006.jpg" alt="Special Memory">
             <h1>Happy Valentine's Day, Goldi! ❤️</h1>
             
             <p>मैंने कभी नहीं सोचा था कि कोई मुझे इतना प्यार करेगी...🥹❤️</p>
