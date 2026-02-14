@@ -1,2 +1,2 @@
-Valentine--2026-
-![Total Visits](https://profile-counter.glitch.me/Goldimanish/count.svg)
+
+<img src="https://tinyurl.com/view-counter-omar?user=Goldimanish">
